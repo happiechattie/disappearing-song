@@ -19,6 +19,13 @@ div {
     color: black;
 }
 
+.poems p {
+    margin-left: 10px;
+    font-family: 'Cutive Mono', monospace;
+    letter-spacing: -2px;
+    line-height: 80%;
+}
+
 .image {
     width: 250px;
     display: block;
