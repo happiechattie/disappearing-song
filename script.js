@@ -8,9 +8,9 @@ document.querySelector('#submission').addEventListener('submit', function(e){
     //posts text, pushes previous text
     let poemCollection = document.querySelectorAll('.poem');
     for (i = 12; i > 1; i--){
-        document.querySelector(`.poem:nth-child(${i})`).querySelector('p').innerText = document.querySelector(`.poem:nth-child(${i - 1})`).querySelector('p').innerText;
+        document.querySelector(`.poem:nth-child(${i})`).querySelector('.poemtxt').innerText = document.querySelector(`.poem:nth-child(${i - 1})`).querySelector('.poemtxt').innerText;
     }
-    poemCollection[0].querySelector('p').innerText = e.target.poem.value;
+    poemCollection[0].querySelector('.poemtxt').innerText = e.target.poem.value;
 
     //posts image, pushes previous images
     for (i = 12; i > 1; i--){
