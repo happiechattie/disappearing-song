@@ -8,13 +8,18 @@ div .poem {
     height: 700px;
 }
 
-#submit img{
-    width: 50px;
+#submit{
+    font-size: 20pt;
+}
+
+#poem {
+    width: 300px;
 }
 
 #signature {
     vertical-align: top;
-    margin-top: 5px;
+    margin-top: 9px;
+    width: 260px;
 }
 
 .poem {
