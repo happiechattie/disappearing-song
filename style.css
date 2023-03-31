@@ -8,6 +8,15 @@ div .poem {
     height: 700px;
 }
 
+#submit img{
+    width: 50px;
+}
+
+#signature {
+    vertical-align: top;
+    margin-top: 5px;
+}
+
 .poem {
     background: #AAAAAA;
 }
