@@ -1,7 +1,8 @@
-const poems = document.querySelectorAll('.poem');
+document.querySelector("#add").addEventListener('click', function(e){
+    document.querySelector("#submission").style.display = 'block';
+})
 
-let o = 1;
-for (poem of poems) {
-    o -= .1;
-    poem.opacity = o;
-}
+document.querySelector('#submission').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.querySelector('#first').querySelector('p').innerText = e.target.poem.value;
+})
