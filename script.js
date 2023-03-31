@@ -4,7 +4,14 @@ document.querySelector("#add").addEventListener('click', function(e){
 
 document.querySelector('#submission').addEventListener('submit', function(e){
     e.preventDefault();
-    let poemCollection = Array.from(document.querySelectorAll('.poem'));
+    let poemCollection = document.querySelectorAll('.poem');
+    console.log(poemCollection);
+    for (i = 12; i > 1; i--){
+        document.querySelector(`.poem:nth-child(${i})`).querySelector('p').innerText = document.querySelector(`.poem:nth-child(${i - 1})`).querySelector('p').innerText;
+    //    document.querySelector(`.poem:nth-child(${i})`).querySelector('p').innerText = document.querySelector(`.poem:nth-child(${i})`).querySelector('p').innerText
+    }
+    poemCollection[0].querySelector('p').innerText = e.target.poem.value;
+    /*
     let poems = poemCollection.map(poem => {
         return poem.innerText;
     })
@@ -22,4 +29,5 @@ document.querySelector('#submission').addEventListener('submit', function(e){
     document.querySelector('#tenth').querySelector('p').innerText = poems[9];
     document.querySelector('#eleventh').querySelector('p').innerText = poems[10];
     document.querySelector('#twelfth').querySelector('p').innerText = poems[11];
+    */
 })

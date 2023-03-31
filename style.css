@@ -19,7 +19,30 @@ div .poem {
 #signature {
     vertical-align: top;
     margin-top: 9px;
-    width: 260px;
+    width: 242px;
+}
+
+#submit{
+    float: right;
+}
+
+#imguploadwrap {
+    margin: auto;
+    font-size: 9pt;
+}
+
+#imguploadwrap nobr{
+    position: relative;
+    top: 3px;
+}
+
+#imglink{
+    float: right;
+    width: 235px;
+}
+
+#formwrap{
+    width: 305px;
 }
 
 .poem {
