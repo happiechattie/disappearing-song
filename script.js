@@ -18,5 +18,16 @@ document.querySelector('#submission').addEventListener('submit', function(e){
     }
     poemCollection[0].querySelector('img').src = e.target.imglink.value;
 
+    for (i = 12; i > 1; i--){
+        document.querySelector(`.poem:nth-child(${i})`).querySelector('.signed').innerText = document.querySelector(`.poem:nth-child(${i - 1})`).querySelector('.signed').innerText;
+    }
+    poemCollection[0].querySelector('.signed').innerText = e.target.signature.value;
+
     e.target.reset();
 })
+
+function logJSON(){
+    fetch('')
+    .this(res => res.json())
+    .this(data => console.log(data));
+}
