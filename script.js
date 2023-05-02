@@ -6,7 +6,11 @@ document.addEventListener('DOMContentLoaded', function(e){
         fetch("http://localhost:3000/poems/")
         .then(r => r.json())
         .then(data => {
-            data.slice().reverse().forEach(poem => renderPoem(poem));
+            console.log(data);
+            data.slice().reverse().forEach(poem => {
+                renderPoem(poem)
+            });
+            console.log('POEMS RENDERED');
         });
     }
 
@@ -24,11 +28,16 @@ document.addEventListener('DOMContentLoaded', function(e){
 
     document.querySelector('#submission').addEventListener('submit', function(e){
         e.preventDefault();
+
         const signed = e.target.signature.value;
         const image = e.target.imglink.value;
         const poemtxt = e.target.poem.value;
         postPoem(makePoem(signed, image, poemtxt));
-        deleteFirstPoem();
+        deleteFirst();
+
+        document.querySelector(".poems").innerText = '';
+
+        renderPoems();
         
         // fetch("http://localhost:3000/poems/")
         // .then(r => r.json())
@@ -55,12 +64,7 @@ document.addEventListener('DOMContentLoaded', function(e){
     //     poemCollection[0].querySelector('.signed').innerText = e.target.signature.value;
 
         e.target.reset();
-
-        document.querySelector(".poems").innerText = '';
-
-        renderPoems();
     })
-
     function renderPoem(poem){
         const d = document.createElement('div');
         d.className = 'poem';
@@ -76,52 +80,69 @@ document.addEventListener('DOMContentLoaded', function(e){
         d.append(s, i, p);
         document.querySelector(".poems").append(d);
     }
+})
 
-    function makePoem(signed, imagelink, poemtext) {
-        const poem = {
-            signature: signed,
-            image: imagelink,
-            poemtxt: poemtext
-        }
-        return poem;
+function makePoem(signed, imagelink, poemtext) {
+    const poem = {
+        signature: signed,
+        image: imagelink,
+        poemtxt: poemtext
     }
+    return poem;
+}
 
-    function postPoem (poem) {
-        //add poem to db.json
-        fetch("http://localhost:3000/poems", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-            },
-            body: JSON.stringify(poem)
-        })
-        .then(r => r.json())
-        .then (function(obj) {
-            console.log(obj);
-        })
+function postPoem (poem) {
+     //add poem to db.json
+    fetch("http://localhost:3000/poems", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        body: JSON.stringify(poem)
+    })
+    .then(r => r.json())
+    .then (function(obj) {
+        console.log('inside postPoem');
+        console.log(obj);
+    })
 
-        //delete first poem on db.json
-        // fetch("http://localhost:3000/poems/")
-        // .then(r => r.json())
-        // .then(data => {
-        //     fetch('http://localhost:3000/poems/' + data[0].id, {
-        //         method: 'DELETE'
-        //     })
-        //     .then( r => r.json())
-        //     .then(data => console.log(data));
-        // });
-    }
+    //delete first poem on db.json
+    // fetch("http://localhost:3000/poems/")
+    // .then(r => r.json())
+    // .then(data => {
+    //     fetch('http://localhost:3000/poems/' + data[0].id, {
+    //         method: 'DELETE'
+    //     })
+    //     .then( r => r.json())
+    //     .then(data => console.log(data));
+    // });
+}
 
-    function deleteFirstPoem(){
-        fetch("http://localhost:3000/poems/")
-        .then(r => r.json())
-        .then(data => {
-            fetch('http://localhost:3000/poems/' + data[0].id, {
+function deleteFirst(){
+    console.log('GET POEMS CALLED');
+    fetch("http://localhost:3000/poems/")
+    .then(r => r.json())
+    .then(data => {
+        let poemsArray = [];
+        for (poem of data){
+            poemsArray.push(poem);
+        };
+        deleteFirstPoem(poemsArray)
+    });
+
+    function deleteFirstPoem(array){
+
+        console.log('func delete');
+        console.log(array);
+    
+        fetch('http://localhost:3000/poems/' + array[0].id, {
                 method: 'DELETE'
             })
             .then( r => r.json())
-            .then(data => console.log(data));
-        });
+            .then(data => {
+                console.log('POEM DELETED');
+                console.log(data);
+            });
     }
-})
+}
