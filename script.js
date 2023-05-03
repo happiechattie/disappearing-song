@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function(e){
         const image = e.target.imglink.value;
         const poemtxt = e.target.poem.value;
         postPoem(makePoem(signed, image, poemtxt));
+
         deleteFirst();
 
         document.querySelector(".poems").innerText = '';
