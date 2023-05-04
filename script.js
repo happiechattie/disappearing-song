@@ -5,10 +5,21 @@ function renderPoems(){
     .then(data => {
         console.log(data);
         data.slice().reverse().forEach(poem => {
-            renderPoem(poem)
+            renderPoem(poem);
         });
         console.log('POEMS RENDERED');
+        fade();
     });
+}
+
+function fade(){
+    const poemCollection = document.querySelector(".poems").childNodes;
+    console.log(poemCollection);
+    let o = 1;
+    for (poem of poemCollection){
+        poem.style.opacity = o;
+        o -= (1/12);
+    }
 }
 
 function postPoem (poem) {
