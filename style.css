@@ -1,3 +1,7 @@
+h1 {
+    
+}
+
 body {
     background: black;
     color: white;
@@ -14,45 +18,46 @@ div .poem {
     height: 700px;
 }
 
+nobr { 
+    position: relative;
+    padding-bottom: 3px;
+}
+
 #submit{
-    font-size: 20pt;
+    position: relative;
+    top: -40px;
+    left: 55px;
+    float: right;
+    font-size: 20px;
+}
+
+#form-bottom {
+    line-height: 20pt;
 }
 
 #poem {
     width: 300px;
 }
 
+#imglink {
+    width: 220px;
+}
+
 #signature {
-    vertical-align: top;
-    margin-top: 9px;
-    width: 242px;
-}
-
-#submit{
-    float: right;
-}
-
-#imguploadwrap {
-    margin: auto;
-    font-size: 9pt;
-}
-
-#imguploadwrap nobr{
-    position: relative;
-    top: 3px;
-}
-
-#imglink{
-    float: right;
-    width: 235px;
+    width: 247px;
 }
 
 #formwrap{
     width: 305px;
 }
 
+#imglink{
+    position: relative;
+}
+
 .poem {
     background: #AAAAAA;
+    overflow: auto;
 }
 
 .poems {
