@@ -86,6 +86,18 @@ function renderPoem(poem){
     i.src = poem.image;
     d.append(s, i, p);
     document.querySelector(".poems").append(d);
+    let show = false;
+    d.addEventListener('mouseenter', e => {
+        if (!show) {
+            d.style.opacity = 1;
+        }
+        else {
+            const poemCollection = document.querySelector(".poems").childNodes;
+            const index = Array.from(poemCollection).indexOf(d);
+            d.style.opacity = 1 - (parseInt(index))/12;
+        }
+        show = !show;
+    })
 }
 
 function makePoem(signed, imagelink, poemtext) {
