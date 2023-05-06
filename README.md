@@ -16,3 +16,11 @@ $ json-server --watch db.json
 ```
 
 This will server your code on http://localhost:3000.
+
+## Usage
+
+On page load, render a list of poems from the API called db.json.
+
+Click the plus button next to the header at the top to show a collapsable poem submission form. The form includes a text input box for the poem, an input line for an imgURL and a signature.
+
+Upon submission of form, the new poem will be posted and the last poem will be deleted.
