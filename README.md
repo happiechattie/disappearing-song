@@ -7,7 +7,7 @@ This project will be a website to post transient poetry. The poetry will last on
 Install json-server to run this single page web application.
 
 ```bash
-$ npm sinatll -g json-server
+$ npm install -g json-server
 ```
 
 Then run the server with: 
