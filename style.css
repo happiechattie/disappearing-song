@@ -3,7 +3,7 @@ h1 {
 }
 
 body {
-    background: url(https://pixabay.com/get/gebcf658ce395c4453686ae28a931729f58ffb82f19ce0af9dcddf6424082693d929bf6c93dc9d686a67333398e6b593be8d404e274f62747197dde43e86b9d1d_1920.jpg);
+    background: url(https://pixabay.com/get/g135dda504eb4fe1b69b0c1f1c894e72619a780958a5e557aed4cd83334b10a493ca0294e424b6f2660f40e144a6b4b07fe4e67db70aebeb1b9ce1a9569dbceb1_1920.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     color: white;
@@ -68,6 +68,7 @@ nobr {
 .poem {
     background: #A8AAAF;
     overflow: auto;
+    opacity: 1;
 }
 
 .poems {
