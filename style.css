@@ -3,7 +3,9 @@ h1 {
 }
 
 body {
-    background: black;
+    background: url(https://pixabay.com/get/gebcf658ce395c4453686ae28a931729f58ffb82f19ce0af9dcddf6424082693d929bf6c93dc9d686a67333398e6b593be8d404e274f62747197dde43e86b9d1d_1920.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     color: white;
 }
 
@@ -64,7 +66,7 @@ nobr {
 }
 
 .poem {
-    background: #AAAAAA;
+    background: #A8AAAF;
     overflow: auto;
 }
 
