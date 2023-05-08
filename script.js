@@ -3,18 +3,15 @@ function renderPoems(){
     fetch("http://localhost:3000/poems/")
     .then(r => r.json())
     .then(data => {
-        console.log(data);
         data.slice().reverse().forEach(poem => {
             renderPoem(poem);
         });
-        console.log('POEMS RENDERED');
         fade();
     });
 }
 
 function fade(){
     const poemCollection = document.querySelector(".poems").childNodes;
-    console.log(poemCollection);
     let o = 1;
     for (poem of poemCollection){
         poem.style.opacity = o;
@@ -23,7 +20,6 @@ function fade(){
 }
 
 function postPoem (poem) {
-    //add poem to db.json
     fetch("http://localhost:3000/poems", {
        method: "POST",
        headers: {
@@ -35,10 +31,9 @@ function postPoem (poem) {
     .then(r => {
         r.json();
     })
-    .then (function(obj) {
-       console.log('inside postPoem');
-       console.log(obj);
-       deleteFirst();
+    .then (obj => {
+        console.log(obj);
+        deleteFirst();
     })
 }
 
@@ -119,25 +114,15 @@ function deleteFirst(){
     fetch("http://localhost:3000/poems/")
     .then(r => r.json())
     .then(data => {
-        let poemsArray = [];
-        for (poem of data){
-            poemsArray.push(poem);
-        };
-        deleteFirstPoem(poemsArray)
+        deleteFirstPoem(data[0]);
     });
 
-    function deleteFirstPoem(array){
-
-        console.log('func delete');
-        console.log(array);
-    
-        fetch('http://localhost:3000/poems/' + array[0].id, {
+    function deleteFirstPoem(data){    
+        fetch('http://localhost:3000/poems/' + data.id, {
                 method: 'DELETE'
             })
             .then( r => r.json())
             .then(data => {
-                console.log('POEM DELETED');
-                console.log(data);
                 renderPoems();
             });
     }
