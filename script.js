@@ -83,15 +83,7 @@ function renderPoem(poem){
     document.querySelector(".poems").append(d);
     let show = false;
     d.addEventListener('mouseenter', e => {
-        // if (!show) {
-            d.style.opacity = 1;
-        // }
-        // else {
-        //     const poemCollection = document.querySelector(".poems").childNodes;
-        //     const index = Array.from(poemCollection).indexOf(d);
-        //     d.style.opacity = 1 - (parseInt(index))/12;
-        // }
-        // show = !show;
+        d.style.opacity = 1;
         d.addEventListener('mouseleave', e => {
             const poemCollection = document.querySelector(".poems").childNodes;
             const index = Array.from(poemCollection).indexOf(d);
