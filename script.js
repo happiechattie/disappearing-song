@@ -37,7 +37,6 @@ function postPoem (poem) {
         poems.pop()
         deleteFirstPoem(poemToDelete[0].id)
         poems.unshift(newPoem)
-        renderPoems()
     })
     .catch(err => {
         console.error(err);
@@ -68,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function(e){
         const poemtxt = e.target.poem.value;
 
         postPoem(makePoem(signed, image, poemtxt));
-        //renderPoems();
 
        e.target.reset();
     })
@@ -114,5 +112,6 @@ function deleteFirstPoem(id){
     fetch(`http://localhost:3000/poems/${id}`, {
             method: 'DELETE'
         })
+    .then(() => renderPoems())
         
 }
