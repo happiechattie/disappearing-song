@@ -24,17 +24,19 @@ function postPoem (poem) {
        method: "POST",
        headers: {
            "Content-Type": "application/json",
-           "Accept": "application/json",
+           "Accept": "application/json"
        },
        body: JSON.stringify(poem)
     })
     .then(r => {
         r.json();
     })
-    .then (obj => {
-        console.log(obj);
+    .then (newPoem => {
         deleteFirst();
     })
+    .catch(err => {
+        console.error(err);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function(e){
@@ -102,7 +104,6 @@ function makePoem(signed, imagelink, poemtext) {
 }
 
 function deleteFirst(){
-    console.log('GET POEMS CALLED');
     fetch("http://localhost:3000/poems/")
     .then(r => r.json())
     .then(data => {
