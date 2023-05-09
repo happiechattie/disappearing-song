@@ -1,9 +1,11 @@
+let poems = []
 function renderPoems(){
     document.querySelector(".poems").innerText = '';
     fetch("http://localhost:3000/poems/")
     .then(r => r.json())
     .then(data => {
-        data.slice().reverse().forEach(poem => {
+        poems=data.reverse()
+        poems.forEach(poem => {
             renderPoem(poem);
         });
         fade();
@@ -20,6 +22,7 @@ function fade(){
 }
 
 function postPoem (poem) {
+    
     fetch("http://localhost:3000/poems", {
        method: "POST",
        headers: {
@@ -28,11 +31,13 @@ function postPoem (poem) {
        },
        body: JSON.stringify(poem)
     })
-    .then(r => {
-        r.json();
-    })
+    .then(r =>  r.json())
     .then (newPoem => {
-        deleteFirst();
+        poemToDelete = poems.slice(-1)
+        poems.pop()
+        deleteFirstPoem(poemToDelete[0].id)
+        poems.unshift(newPoem)
+        renderPoems()
     })
     .catch(err => {
         console.error(err);
@@ -55,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function(e){
         showForm = !showForm;
     })
 
-    document.querySelector('#submission').addEventListener('submit', function(e){
+    document.querySelector('#submission').addEventListener('submit', (e)=> {
         e.preventDefault();
 
         const signed = e.target.signature.value;
@@ -63,9 +68,9 @@ document.addEventListener('DOMContentLoaded', function(e){
         const poemtxt = e.target.poem.value;
 
         postPoem(makePoem(signed, image, poemtxt));
-        renderPoems();
+        //renderPoems();
 
-        e.target.reset();
+       e.target.reset();
     })
 })
 
@@ -103,20 +108,11 @@ function makePoem(signed, imagelink, poemtext) {
     return poem;
 }
 
-function deleteFirst(){
-    fetch("http://localhost:3000/poems/")
-    .then(r => r.json())
-    .then(data => {
-        deleteFirstPoem(data[0]);
-    });
 
-    function deleteFirstPoem(data){    
-        fetch('http://localhost:3000/poems/' + data.id, {
-                method: 'DELETE'
-            })
-            .then( r => r.json())
-            .then(data => {
-                renderPoems();
-            });
-    }
+function deleteFirstPoem(id){  
+    
+    fetch(`http://localhost:3000/poems/${id}`, {
+            method: 'DELETE'
+        })
+        
 }
