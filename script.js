@@ -36,7 +36,6 @@ function postPoem (poem) {
         poemToDelete = poems.slice(-1)
         poems.pop()
         deleteFirstPoem(poemToDelete[0].id)
-        poems.unshift(newPoem)
     })
     .catch(err => {
         console.error(err);
@@ -45,7 +44,6 @@ function postPoem (poem) {
 
 document.addEventListener('DOMContentLoaded', function(e){
     let showForm = false;
-    let poems = [];
 
     renderPoems();
 
