@@ -34,7 +34,6 @@ function postPoem (poem) {
     .then(r =>  r.json())
     .then (newPoem => {
         poemToDelete = poems.slice(-1)
-        poems.pop()
         deleteFirstPoem(poemToDelete[0].id)
     })
     .catch(err => {
