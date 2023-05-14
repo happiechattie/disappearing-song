@@ -83,7 +83,6 @@ function renderPoem(poem){
     i.src = poem.image;
     d.append(s, i, p);
     document.querySelector(".poems").append(d);
-    let show = false;
     d.addEventListener('mouseenter', e => {
         d.style.opacity = 1;
         d.addEventListener('mouseleave', e => {
